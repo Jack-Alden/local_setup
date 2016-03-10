@@ -1,0 +1,16 @@
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[user]
+	name = Jack-Alden
+	email = sirnapier88@gmail.com
+[alias]
+	lg = log --pretty=format:\"%h %s\" --graph
+	fuc = commit -a -m
+	co = checkout
+	rs1 = reset --soft HEAD~
+	rs2 = commit -c ORIG_HEAD
+	pbn = push --set-upstream origin
+[core]
+	editor = nano
