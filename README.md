@@ -11,5 +11,5 @@ which ones were updated and which ones weren't.
 
 I keep this repo in my Documents directory, which allows the pug command to work.  If you want to
 use the tool but keep this repo somewhere else, just update your .bash_profile to use the necessary
-path.  (Replace <path> in the following:)  
+path.  (Replace `<path>` in the following:)  
 `alias pug ruby <path>/update_local_setup.rb`
