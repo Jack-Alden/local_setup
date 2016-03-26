@@ -19,8 +19,6 @@ configs_list.each do |f|
   end
 end
 
-puts updates
-
 if updates.empty?
   puts "Nothing to update!".green
 else
