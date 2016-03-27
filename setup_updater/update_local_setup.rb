@@ -4,7 +4,8 @@ configs_list = [
   ".bash_profile",
   ".gitconfig",
   ["Library/Application Support/KomodoEdit/9.3/schemes/", "Alden_Code.ksf"],
-  ["Library/Preferences/", "com.googlecode.iterm2.plist"]
+  ["Library/Preferences/", "com.googlecode.iterm2.plist"],
+  ["Library/Preferences/", "com.activestate.KomodoEdit.plist"]
 ]
 
 updates    = []
