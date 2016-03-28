@@ -1,20 +1,17 @@
-require_relative 'configs_list.rb'
+require_relative 'fileToCheckClass.rb'
+require_relative 'configListModule.rb'
 
-configs_list = [
-  [true, "", ".bash_profile"],
-  [true, "", ".gitconfig"],
-  [true, "Library/Application Support/KomodoEdit/9.3/schemes/", "Alden_Code.ksf"],
-  [true, "Library/Preferences/", "com.googlecode.iterm2.plist"],
-  [true, "Library/Preferences/", "com.activestate.KomodoEdit.plist"],
-  [false, "private/etc/apache2/","httpd.conf"],
-  [false, "private/etc/", "hosts"]
-]
+class ListOfConfigs
+  include ConfigList
+end
+
+configs = ListOfConfigs.new
 
 updates    = []
 added      = []
 no_changes = []
 
-configs_list.each do |f|
+configs.config_list.each do |f|
   f = FileToCheck.new(*f)
   
   if f.need_to_add?

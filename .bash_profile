@@ -16,6 +16,7 @@ alias koans='cd ~/workspace/koans'
 alias komodo='open -a "~/Applications/Komodo Edit 9"'
 
 alias gps='git push'
+alias gpl='git pull'
 alias rls='rails s'
 
 alias pug='ruby ~/Documents/local_setup/setup_updater/update_local_setup.rb'

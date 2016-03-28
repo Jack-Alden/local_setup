@@ -1,5 +1,5 @@
 require          'fileutils'
-require_relative 'colorize.rb'
+require_relative 'colorizeClass.rb'
 
 class FileToCheck
   
