@@ -18,8 +18,12 @@ class FileToCheck
     @backup_path     = @backup_add_path + @file_name
   end
   
-  def need_to_add?
+  def need_to_add_backup?
     !File.file?(@backup_path)
+  end
+  
+  def need_to_add_for_install?
+    !File.file?(@edit_path)
   end
   
   def updated?
