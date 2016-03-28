@@ -20,3 +20,5 @@ Command Line Tools:
 Xcode + command line tools, git, heroku
 Package installers      - Homebrew, Node, Bower
 Ruby environment        - rbenv, pry, rails
+
+Use setup_updater/configListModule.rb for references on where files should move to.
