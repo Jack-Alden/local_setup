@@ -19,4 +19,5 @@ alias gps='git push'
 alias gpl='git pull'
 alias rls='rails s'
 
-alias pug='ruby ~/Documents/local_setup/setup_updater/update_local_setup.rb'
+alias pug='ruby ~/Documents/local_setup/setup_updater/backup_local_setup.rb'
+alias pugnew='ruby ~/Documents/local_setup/setup_updater/update_local_setup.rb'

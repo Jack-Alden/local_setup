@@ -21,4 +21,5 @@ Xcode + command line tools, git, heroku
 Package installers      - Homebrew, Node, Bower
 Ruby environment        - rbenv, pry, rails
 
-Use setup_updater/configListModule.rb for references on where files should move to.
+After moving the .bash_profile to Users/Jack_Alden, you can use pugnew to update all of your config
+files from this directory.
