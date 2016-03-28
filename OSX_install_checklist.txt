@@ -1,0 +1,22 @@
+The following is a list of programs to install when starting up a new machine
+
+From Disk:
+Music Editing           - Logic and FastTrack Driver
+Home Office             - Microsoft Office
+
+From Internet:
+Terminal                - iTerm
+Text Editor             - Komodo Edit
+Web Browsers            - Google Chrome, Mozilla Firefox
+Web Browser Extensions  - Chromecast
+FTP                     - Cyberduck
+SQL Administrating      - sqlitebrowser, pgAdmin
+Image Editing           - GIMP
+Screen shots/casts      - Monosnap
+HTTP Proxy              - Squidman
+Tunes                   - Spotify
+
+Command Line Tools:
+Xcode + command line tools, git, heroku
+Package installers      - Homebrew, Node, Bower
+Ruby environment        - rbenv, pry, rails

@@ -1,11 +1,12 @@
 require_relative 'configs_list.rb'
 
 configs_list = [
-  ".bash_profile",
-  ".gitconfig",
-  ["Library/Application Support/KomodoEdit/9.3/schemes/", "Alden_Code.ksf"],
-  ["Library/Preferences/", "com.googlecode.iterm2.plist"],
-  ["Library/Preferences/", "com.activestate.KomodoEdit.plist"]
+  [true, "", ".bash_profile"],
+  [true, "", ".gitconfig"],
+  [true, "Library/Application Support/KomodoEdit/9.3/schemes/", "Alden_Code.ksf"],
+  [true, "Library/Preferences/", "com.googlecode.iterm2.plist"],
+  [true, "Library/Preferences/", "com.activestate.KomodoEdit.plist"],
+  [false, "private/etc/apache2/","httpd.conf"]
 ]
 
 updates    = []
