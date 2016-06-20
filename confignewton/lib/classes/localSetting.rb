@@ -15,9 +15,11 @@ class LocalSetting
   end
   
   def choose_action
-    repo = Repo.new("/Users/Jack_Barry/Documents/ConfigNewton/config_files/")
+    repo = Repo.new("/Users/Jack_Barry/Documents/ConfigNewton")
     
-    if !FileUtils.identical?(@full_path, @backup_path)
+    if !File.file?(@full_path) && !File.file?(@backup_path)
+      @status = "nonexistent"
+    elsif !FileUtils.identical?(@full_path, @backup_path)
       last_update = File.mtime(@full_path)
       last_backup = repo.log('personal', @backup_path, max_count: 1)[0].date
       
