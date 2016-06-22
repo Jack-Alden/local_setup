@@ -34,6 +34,8 @@ class LocalSetting
         if backup == "y"
           FileUtils.cp(@full_path, @backup_path)
           @status = "backed up"
+        else
+          @status = "not backed up"
         end
       elsif last_backup > last_update
         puts "Would you like to update #{@name} on your machine? (y) or (n)"
@@ -42,6 +44,8 @@ class LocalSetting
         if update == "y"
           FileUtils.cp(@backup_path, @full_path)
           @status = "updated"
+        else
+          @status = "not updated"
         end
       end
     end
