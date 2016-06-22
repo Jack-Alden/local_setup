@@ -6,45 +6,35 @@ end
 
 def confignewton
   configs       = ListOfConfigs.new
-  backed_up     = []
-  not_backed_up = []
-  updated       = []
-  not_updated   = []
-  no_changes    = []
-  no_backup     = []
-  no_local      = []
-  not_present   = []
+  tracking      = {
+                    backed_up:      [],
+                    not_backed_up:  [],
+                    updated:        [],
+                    not_updated:    [],
+                    no_backup:      [],
+                    no_local:       [],
+                    not_present:    [],
+                    no_changes:     []
+                  }
   
   configs.config_list.each do |f|
     f = LocalSetting.new(*f)
     f.choose_action
-    if f.status == "backed up"
-      backed_up.push(f.name)
-    elsif f.status == "not backed up"
-      not_backed_up.push(f.name)
-    elsif f.status == "updated"
-      updated.push(f.name)
-    elsif f.status == "not updated"
-      not_updated.push(f.name)
-    elsif f.status == "no backup"
-      no_backup.push(f.name)
-    elsif f.status == "no local"
-      no_local.push(f.name)
-    elsif f.status == "nonexistent"
-      not_present.push(f.name)
-    elsif f.status == nil
-      no_changes.push(f.name)
+    if f.status == nil
+      tracking[:no_changes].push(f.name)
+    else
+      tracking[f.status].push(f.name)
     end
   end
   
-  print_out( backed_up,
-             not_backed_up,
-             updated,
-             not_updated,
-             no_backup,
-             no_local,
-             not_present,
-             no_changes
+  print_out( tracking[:backed_up],
+             tracking[:not_backed_up],
+             tracking[:updated],
+             tracking[:not_updated],
+             tracking[:no_backup],
+             tracking[:no_local],
+             tracking[:not_present],
+             tracking[:no_changes]
             ) { |a| a.each { |item| puts ("    " + item.to_s).yellow } }
 end
   

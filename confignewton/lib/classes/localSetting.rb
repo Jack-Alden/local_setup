@@ -18,11 +18,11 @@ class LocalSetting
     repo = Repo.new("/Users/Jack_Barry/Documents/ConfigNewton/")
     
     if !File.file?(@full_path) && !File.file?(@backup_path)
-      @status = "nonexistent"
+      @status = :not_present
     elsif File.file?(@full_path) && !File.file?(@backup_path)
-      @status = "no backup"
+      @status = :no_backup
     elsif !File.file?(@full_path) && File.file?(@backup_path)
-      @status = "no local"
+      @status = :no_local
     elsif !FileUtils.identical?(@full_path, @backup_path)
       last_update = File.mtime(@full_path)
       last_backup = repo.log('personal', "config_files/#{@name}", max_count: 1)[0].date
@@ -33,9 +33,9 @@ class LocalSetting
         backup = gets.chomp.downcase
         if backup == "y"
           FileUtils.cp(@full_path, @backup_path)
-          @status = "backed up"
+          @status = :backed_up
         else
-          @status = "not backed up"
+          @status = :not_backed_up
         end
       elsif last_backup > last_update
         puts "Would you like to update #{@name} on your machine? (y) or (n)"
@@ -43,9 +43,9 @@ class LocalSetting
         update = gets.chomp.downcase
         if update == "y"
           FileUtils.cp(@backup_path, @full_path)
-          @status = "updated"
+          @status = :updated
         else
-          @status = "not updated"
+          @status = :not_updated
         end
       end
     end
