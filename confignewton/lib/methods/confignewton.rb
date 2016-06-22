@@ -5,17 +5,18 @@ class ListOfConfigs
 end
 
 def confignewton
-  configs       = ListOfConfigs.new
-  tracking      = {
-                    backed_up:      [],
-                    not_backed_up:  [],
-                    updated:        [],
-                    not_updated:    [],
-                    no_backup:      [],
-                    no_local:       [],
-                    not_present:    [],
-                    no_changes:     []
-                  }
+  configs         = ListOfConfigs.new
+  tracking_params = [ :backed_up,
+                      :not_backed_up,
+                      :updated,
+                      :not_updated,
+                      :no_backup,
+                      :no_local,
+                      :not_present,
+                      :no_changes
+                      ]
+  tracking = {}
+  tracking_params.each { |param| tracking[param] = [] }
   
   configs.config_list.each do |f|
     f = LocalSetting.new(*f)
