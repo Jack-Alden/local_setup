@@ -16,3 +16,5 @@
 	pbn = push --set-upstream origin
 [core]
 	editor = nano
+[push]
+	default = simple
