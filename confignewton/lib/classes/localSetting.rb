@@ -15,20 +15,34 @@ class LocalSetting
   end
   
   def choose_action
-    repo = Repo.new("/Users/Jack_Barry/Documents/ConfigNewton")
+    repo = Repo.new("/Users/Jack_Barry/Documents/ConfigNewton/")
     
     if !File.file?(@full_path) && !File.file?(@backup_path)
       @status = "nonexistent"
+    elsif File.file?(@full_path) && !File.file?(@backup_path)
+      @status = "no backup"
+    elsif !File.file?(@full_path) && File.file?(@backup_path)
+      @status = "no local"
     elsif !FileUtils.identical?(@full_path, @backup_path)
       last_update = File.mtime(@full_path)
-      last_backup = repo.log('personal', @backup_path, max_count: 1)[0].date
+      last_backup = repo.log('personal', "config_files/#{@name}", max_count: 1)[0].date
       
       if last_backup < last_update
-        FileUtils.cp(@full_path, @backup_path)
-        @status = "backed up"
+        puts "Would you like to make a backup for #{@name}? (y) or (n)"
+        print "> "
+        backup = gets.chomp.downcase
+        if backup == "y"
+          FileUtils.cp(@full_path, @backup_path)
+          @status = "backed up"
+        end
       elsif last_backup > last_update
-        FileUtils.cp(@backup_path, @full_path)
-        @status = "updated"
+        puts "Would you like to update #{@name} on your machine? (y) or (n)"
+        print "> "
+        update = gets.chomp.downcase
+        if update == "y"
+          FileUtils.cp(@backup_path, @full_path)
+          @status = "updated"
+        end
       end
     end
   end

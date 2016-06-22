@@ -36,26 +36,28 @@ bakwht='\e[47m'   # White
 txtrst='\e[0m'    # Text Reset
  
 print_before_the_prompt () {
-    printf "\n$bldpur%s: $txtgrn%s $bldylw%s\n$txtrst" "$USER" "$PWD" "$(vcprompt)"
+    printf "\n$bldpur%s Root: $txtgrn%s $bldylw%s\n$txtrst" "$USER" "$PWD" "$(vcprompt)"
 }
  
 PROMPT_COMMAND=print_before_the_prompt
-PS1='>'
+PS1='> '
+PS2='$ '
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-alias spreadEm='defaults write com.apple.finder AppleShowAllFiles YES'
-alias foldEm='defaults write com.apple.finder AppleShowAllFiles NO'
+# The usual suspects
+alias spreadEm='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder'
+alias foldEm='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder'
 alias updateBash='nano ~/.bash_profile'
 
-alias koans='cd ~/workspace/koans'
-alias bandock='cd ~/workspace/bandock'
+# Text edit
+alias komodo='open -a "~/../../Applications/Komodo Edit 10"'
 
-alias komodo='open -a "~/Applications/Komodo Edit 9"'
-
+# Development shortcuts
 alias gps='git push'
 alias gpl='git pull'
 alias rls='rails s'
 
+# Updating local settings
 alias pug='ruby ~/Documents/local_setup/setup_updater/backup_local_setup.rb'
 alias pugnew='ruby ~/Documents/local_setup/setup_updater/update_local_setup.rb'
