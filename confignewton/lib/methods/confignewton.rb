@@ -14,66 +14,54 @@ def confignewton
                       :no_local,
                       :not_present,
                       :no_changes
-                      ]
+                    ]
+  phrases         = [
+                      "Backed up the following files on your machine".green,
+                      "The following files were not backed up on your machine".red,
+                      "Updated the following files from your backup repo".green,
+                      "The following files were not updated from your backup repo".red,
+                      "These files do not have a backup yet".red,
+                      "These backups do not have a corresponding local file".red,
+                      "These files could not be found in either directory".red,
+                      "No changes made to the following files".green
+                    ]
   tracking = {}
-  tracking_params.each { |param| tracking[param] = [] }
+  tracking_params.zip(phrases).each { |param, phrase| tracking[param] = [phrase, []] }
   
   configs.config_list.each do |f|
     f = LocalSetting.new(*f)
     f.choose_action
     if f.status == nil
-      tracking[:no_changes].push(f.name)
+      tracking[:no_changes][1].push(f.name)
     else
-      tracking[f.status].push(f.name)
+      tracking[f.status][1].push(f.name)
     end
   end
   
-  print_out( tracking[:backed_up],
-             tracking[:not_backed_up],
-             tracking[:updated],
-             tracking[:not_updated],
-             tracking[:no_backup],
-             tracking[:no_local],
-             tracking[:not_present],
-             tracking[:no_changes]
-            ) { |a| a.each { |item| puts ("    " + item.to_s).yellow } }
+  print_out(tracking)
 end
   
-def print_out(bu, nbu, ud, nud, nb, nl, np, nc)
-  if bu.empty? && nbu.empty? && ud.empty? && nud.empty? && np.empty?
+def print_out(t_dict)
+  all_clear       = [ :backed_up,
+                      :not_backed_up,
+                      :updated,
+                      :not_updated,
+                      :not_present
+                    ]
+  all_clear_bool  = true
+  
+  for i in all_clear do
+    all_clear_bool = false if t_dict[i][1].empty?
+  end
+  
+  if all_clear_bool == true
     puts "All clear boss!".green
   else
-    unless bu.empty?
-      puts "Backed up the following files from your machine".green
-      yield(bu)
-    end
-    unless nbu.empty?
-      puts "The following files were not backed up from your machine".red
-      yield(nbu)
-    end
-    unless ud.empty?
-      puts "Updated the following files from your backup repo".green
-      yield(ud)
-    end
-    unless nud.empty?
-      puts "The following files were not updated from your backup repo".red
-      yield(nud)
-    end
-    unless nb.empty?
-      puts "These files do not have a backup yet".red
-      yield(nb)
-    end
-    unless nl.empty?
-      puts "These backups do not currently have a corresponding local file".red
-      yield(nl)
-    end
-    unless np.empty?
-      puts "These files could not be found in either directory".red
-      yield(np)
-    end
-    unless nc.empty?
-      puts "No changes made to the following files".green
-      yield(nc)
+    t_dict.each do |key, value|
+      unless value[1].empty?
+        puts value[0]
+        value[1].each { |item| puts ("    " + item.to_s).yellow }
+      end
     end
   end
 end
