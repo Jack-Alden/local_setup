@@ -9,13 +9,13 @@ class LocalSetting
     @user         = user        # In User directory?
     @status       = nil         # Requires update or backup?
     
-    @base_dir     = @user ? "/Users/Jack_Barry/" : "/"
+    @base_dir     = @user ? "/Users/#{ USERNAME }/" : "/"
     @full_path    = @base_dir + @local + @name
-    @backup_path  = "/Users/Jack_Barry/Documents/ConfigNewton/config_files/" + @name
+    @backup_path  = "/Users/#{ USERNAME }/Documents/ConfigNewton/config_files/" + @name
   end
   
   def choose_action
-    repo = Repo.new("/Users/Jack_Barry/Documents/ConfigNewton/")
+    repo = Repo.new("/Users/#{ USERNAME }/Documents/ConfigNewton/")
     
     if !File.file?(@full_path) && !File.file?(@backup_path)
       @status = :not_present
