@@ -16,5 +16,6 @@
 	pbn = push --set-upstream origin
 [core]
 	editor = nano
+	excludesfile = /Users/Jack_Barry/.gitignore_global
 [push]
 	default = simple

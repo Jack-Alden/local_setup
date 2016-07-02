@@ -49,15 +49,15 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 alias spreadEm='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder'
 alias foldEm='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder'
 alias updateBash='nano ~/.bash_profile'
+alias confignewton='ruby ~/Documents/ConfigNewton/confignewton/bin/run.rb'
 
 # Text edit
-alias komodo='open -a "~/../../Applications/Komodo Edit 10"'
+alias komodo='open -a "Komodo Edit 10"'
 
 # Development shortcuts
 alias gps='git push'
 alias gpl='git pull'
 alias rls='rails s'
 
-# Updating local settings
-alias pug='ruby ~/Documents/local_setup/setup_updater/backup_local_setup.rb'
-alias pugnew='ruby ~/Documents/local_setup/setup_updater/update_local_setup.rb'
+# MIT
+alias EECSpy='cd ~/Desktop/Introduction-to-EECS-I/PythonTutor'
