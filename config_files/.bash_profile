@@ -58,6 +58,3 @@ alias komodo='open -a "Komodo Edit 10"'
 alias gps='git push'
 alias gpl='git pull'
 alias rls='rails s'
-
-# MIT
-alias EECSpy='cd ~/Desktop/Introduction-to-EECS-I/PythonTutor'
