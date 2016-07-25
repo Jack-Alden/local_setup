@@ -1,5 +1,7 @@
 export PATH="/usr/local/mysql/bin:$PATH"
 export PATH=/usr/local/bin:$PATH
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
  
 txtblk='\e[0;30m' # Black - Regular
 txtred='\e[0;31m' # Red
@@ -58,3 +60,4 @@ alias komodo='open -a "Komodo Edit 10"'
 alias gps='git push'
 alias gpl='git pull'
 alias rls='rails s'
+alias glg='clear && git lg'

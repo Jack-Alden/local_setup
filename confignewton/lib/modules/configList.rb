@@ -5,7 +5,9 @@ module ConfigList
       # [ "path from root or User directory", "filename", User directory? ]
       ["", ".bash_profile", true],
       ["", ".gitconfig", true],
+      ["", ".gitignore_global", true],
       ["Library/Application Support/KomodoEdit/10.0/schemes/", "Alden_Code.ksf", true],
+      ["Library/Application Support/KomodoEdit/10.0/schemes/", "Alden_Code_Daytime.ksf", true],
       ["Library/Preferences/", "com.googlecode.iterm2.plist", true],
       ["Library/Preferences/", "com.activestate.KomodoEdit.plist", true],
       ["private/etc/apache2/","httpd.conf", false],
