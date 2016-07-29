@@ -9,7 +9,7 @@
 	email = sirnapier88@gmail.com
 [alias]
 	lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-	fuc = commit -a -m
+	fuc = "!git add . && git commit -a -m"
 	co = checkout
 	rs1 = reset --soft HEAD~
 	rs2 = commit -c ORIG_HEAD
